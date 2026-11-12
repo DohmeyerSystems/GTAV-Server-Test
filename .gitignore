@@ -12,6 +12,15 @@ server-data/txData/
 txData/
 /backups/
 *.log
+*.bkp
+.replxx_history
+
+# --- Dateien im Home von User 'fivem' (= Repo-Ordner) ---
+.lesshst
+.bash_history
+.cache/
+.local/
+.config/
 
 # --- Editor/OS ---
 .vscode/
