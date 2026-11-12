@@ -60,23 +60,18 @@ return {
     ---@alias ColumnName string
     ---@type [TableName, ColumnName][]
     characterDataTables = {
-        {'properties', 'owner'},
-        {'bank_accounts_new', 'id'},
+        -- OVERRIDE (server-data/overrides): nur Tabellen installierter Resources.
+        -- Bei neuen Resources (Banking, Housing, Handy, ...) deren Tabellen hier ergaenzen,
+        -- sonst bleiben beim Loeschen eines Charakters Datenleichen zurueck.
+        -- {'properties', 'owner'},              -- qbx_properties
+        -- {'bank_accounts_new', 'id'},          -- Renewed-Banking
         {'playerskins', 'citizenid'},
-        {'player_mails', 'citizenid'},
+        -- {'player_mails', 'citizenid'},        -- npwd / Mail
         {'player_outfits', 'citizenid'},
         {'player_vehicles', 'citizenid'},
         {'player_groups', 'citizenid'},
         {'players', 'citizenid'},
-        {'npwd_calls', 'identifier'},
-        {'npwd_darkchat_channel_members', 'user_identifier'},
-        {'npwd_marketplace_listings', 'identifier'},
-        {'npwd_messages_participants', 'participant'},
-        {'npwd_notes', 'identifier'},
-        {'npwd_phone_contacts', 'identifier'},
-        {'npwd_phone_gallery', 'identifier'},
-        {'npwd_twitter_profiles', 'identifier'},
-        {'npwd_match_profiles', 'identifier'},
+        -- npwd-Tabellen (Handy) erst bei Installation von npwd wieder aktivieren
     }, -- Rows to be deleted when the character is deleted
 
     server = {
