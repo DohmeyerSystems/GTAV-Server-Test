@@ -1,0 +1,42 @@
+# =====================================================================
+# resources.lock – feste Versionen aller Fremd-Resources
+# =====================================================================
+# Format (Whitespace-getrennt, eine Resource pro Zeile):
+#   <typ>     <name>                 <github-repo>                         <ref>                                      <zielordner>      [subpath]
+#
+# typ = release -> lädt  https://github.com/<repo>/releases/download/<ref>/<name>.zip
+#                  (nötig für ox_* / qbx_*, weil die Releases die gebaute Web-UI enthalten)
+# typ = git     -> lädt  den Quellstand am Commit <ref> (optional nur <subpath>)
+#
+# Update-Workflow:  ref hier anpassen  ->  ./scripts/vendor-resources.sh <name>  ->  testen  ->  committen
+# =====================================================================
+
+# --- CFX Default ------------------------------------------------------
+git      cfx-server-data       citizenfx/cfx-server-data             c6afa3909c763e3327ed76825e78453286c99f05   [cfx-default]     resources
+
+# --- Overextended (ox) ------------------------------------------------
+release  oxmysql               overextended/oxmysql                  v2.14.3                                    [ox]
+release  ox_lib                overextended/ox_lib                   v3.42.2                                    [ox]
+release  ox_target             overextended/ox_target                v1.18.1                                    [ox]
+release  ox_inventory          overextended/ox_inventory             v2.48.1                                    [ox]
+
+# --- Qbox -------------------------------------------------------------
+release  qbx_core              Qbox-project/qbx_core                 v1.24.1                                    [qbx]
+release  qbx_spawn             Qbox-project/qbx_spawn                v0.1.1                                     [qbx]
+release  qbx_vehicles          Qbox-project/qbx_vehicles             v1.4.2                                     [qbx]
+release  qbx_adminmenu         Qbox-project/qbx_adminmenu            v0.1.0                                     [qbx]
+release  qbx_vehiclekeys       Qbox-project/qbx_vehiclekeys          v1.0.2                                     [qbx]
+# qbx_idcard: Pflicht, da qbx_core neuen Charakteren Ausweis/Führerschein gibt (keine Releases -> Commit)
+git      qbx_idcard            Qbox-project/qbx_idcard               6462f332b939800c9c45855814b54af3529597ae   [qbx]
+
+# --- Standalone -------------------------------------------------------
+release  illenium-appearance   iLLeniumStudios/illenium-appearance   v5.7.0                                     [standalone]
+git      bob74_ipl             Bob74/bob74_ipl                       037dd6c71f6894be771e9343008223d7a3305d79   [standalone]
+# MugShotBase64: Abhängigkeit von qbx_idcard
+git      MugShotBase64         BaziForYou/MugShotBase64              9fac1e8783f447666710a6518d4adef08f9cf300   [standalone]      MugShotBase64
+
+# --- Qbox Recipe (nur Daten: items.lua, Item-Bilder, Basis-SQL) --------
+# Wird nicht als Resource installiert, sondern von vendor-resources.sh
+# gezielt in ox_inventory bzw. sql/ übernommen.
+git      txAdminRecipe         Qbox-project/txAdminRecipe            0a12aa7c3e023b9d22264db4fb200d5183321b56   -
+git      qbx_invimages         Qbox-project/qbx_invimages            817472083aca92bd21145eec4a78f6b5052f07a1   -

@@ -1,0 +1,27 @@
+# systemd-Unit für den FiveM-Server
+# Installation (Pfad/User anpassen):
+#   sudo cp deploy/fivem.service /etc/systemd/system/fivem.service
+#   sudo systemctl daemon-reload && sudo systemctl enable --now fivem
+# Logs:  journalctl -u fivem -f
+#
+# Hinweis: txAdmin braucht beim ersten Start eine interaktive Einrichtung
+# (PIN steht im Log). Danach läuft alles über die Web-UI (Port 40120).
+
+[Unit]
+Description=FiveM Qbox Server (txAdmin)
+After=network-online.target mariadb.service
+Wants=network-online.target
+Requires=mariadb.service
+
+[Service]
+Type=simple
+User=fivem
+Group=fivem
+WorkingDirectory=/opt/gtav-server/server-data
+ExecStart=/opt/gtav-server/scripts/start.sh
+Restart=on-failure
+RestartSec=10
+LimitNOFILE=65535
+
+[Install]
+WantedBy=multi-user.target

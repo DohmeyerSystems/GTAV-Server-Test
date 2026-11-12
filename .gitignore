@@ -1,0 +1,20 @@
+# --- Geheimnisse ---
+server-data/secrets.cfg
+.env
+*.key
+
+# --- FXServer-Binaries (werden per scripts/install-fxserver.sh geladen) ---
+/fxserver/
+
+# --- Laufzeitdaten ---
+server-data/cache/
+server-data/txData/
+txData/
+/backups/
+*.log
+
+# --- Editor/OS ---
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db
