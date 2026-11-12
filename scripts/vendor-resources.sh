@@ -43,6 +43,19 @@ fetch_release() { # repo tag name dir
   unzip -q "$zip" -d "$4"
   # Manche Zips enthalten <name>/..., andere liegen flach -> normalisieren
   if [[ -d "$4/$3" && ! -f "$4/fxmanifest.lua" ]]; then
+    # Zusätzliche Resources im selben Zip (z.B. ox_lib liefert cfxlua-require mit)
+    # NICHT verwerfen, sondern als eigene Resources mitinstallieren.
+    local extra
+    for extra in "$4"/*/; do
+      extra="${extra%/}"
+      [[ "$(basename "$extra")" == "$3" ]] && continue
+      if [[ -f "$extra/fxmanifest.lua" || -f "$extra/__resource.lua" ]]; then
+        mkdir -p "$WORK/_extra"
+        mv "$extra" "$WORK/_extra/"
+      else
+        echo "WARN: Unbekannter Inhalt im Zip von $3: $(basename "$extra")" >&2
+      fi
+    done
     mv "$4/$3" "$WORK/_tmp_$3" && rm -rf "$4" && mv "$WORK/_tmp_$3" "$4"
   fi
 }
@@ -90,6 +103,16 @@ while read -r type name repo ref dest subpath; do
       install_dir "$src" "$RES/$dest/$name"
       ;;
   esac
+
+  # Mitgelieferte Zusatz-Resources aus Release-Zips installieren
+  if [[ -d "$WORK/_extra" ]]; then
+    for extra in "$WORK/_extra"/*/; do
+      extra="${extra%/}"
+      echo "   + mitgeliefert: $(basename "$extra")"
+      install_dir "$extra" "$RES/$dest/$(basename "$extra")"
+    done
+    rm -rf "$WORK/_extra"
+  fi
 done < "$LOCK"
 
 # SQL-Dateien der Resources nach sql/ spiegeln (Reihenfolge = Import-Reihenfolge)
