@@ -28,6 +28,10 @@ release  qbx_adminmenu         Qbox-project/qbx_adminmenu            v0.1.0     
 release  qbx_vehiclekeys       Qbox-project/qbx_vehiclekeys          v1.0.2                                     [qbx]
 # qbx_idcard: Pflicht, da qbx_core neuen Charakteren Ausweis/Führerschein gibt (keine Releases -> Commit)
 git      qbx_idcard            Qbox-project/qbx_idcard               6462f332b939800c9c45855814b54af3529597ae   [qbx]
+# qbx_radialmenu: Release v0.1.0 ist von 2023 (ohne Trunk-Sicherheitsfixes) -> Commit
+git      qbx_radialmenu        Qbox-project/qbx_radialmenu           f7ef3aa8c069e5f060299d5317637c34f63511cc   [qbx]
+# qbx_seatbelt: Gurt/Harness; qbx_radialmenu ruft dessen Export ungeprueft auf (keine Releases -> Commit)
+git      qbx_seatbelt          Qbox-project/qbx_seatbelt             05d4d47a23c92f594efba0d43b2b87777fbf7d73   [qbx]
 
 # --- Standalone -------------------------------------------------------
 release  illenium-appearance   iLLeniumStudios/illenium-appearance   v5.7.0                                     [standalone]
