@@ -297,7 +297,10 @@ lib.callback.register('qbx_admin:server:spawnVehicle', function(source, model)
         warp = true,
     })
 
-    exports.qbx_vehiclekeys:GiveKeys(source, vehicle)
+    -- OVERRIDE: qbx_vehiclekeys entfernt -> Aufruf absichern (sonst schlaegt der Spawn fehl)
+    if GetResourceState('qbx_vehiclekeys') == 'started' then
+        exports.qbx_vehiclekeys:GiveKeys(source, vehicle)
+    end
     return netId
 end)
 

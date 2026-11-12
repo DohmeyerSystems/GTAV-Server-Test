@@ -25,7 +25,7 @@ release  qbx_core              Qbox-project/qbx_core                 v1.24.1    
 release  qbx_spawn             Qbox-project/qbx_spawn                v0.1.1                                     [qbx]
 release  qbx_vehicles          Qbox-project/qbx_vehicles             v1.4.2                                     [qbx]
 release  qbx_adminmenu         Qbox-project/qbx_adminmenu            v0.1.0                                     [qbx]
-release  qbx_vehiclekeys       Qbox-project/qbx_vehiclekeys          v1.0.2                                     [qbx]
+# qbx_vehiclekeys: entfernt (Probleme im Spielbetrieb). Aufrufe in qbx_core/qbx_adminmenu per Override abgesichert.
 # qbx_idcard: Pflicht, da qbx_core neuen Charakteren Ausweis/Führerschein gibt (keine Releases -> Commit)
 git      qbx_idcard            Qbox-project/qbx_idcard               6462f332b939800c9c45855814b54af3529597ae   [qbx]
 # qbx_radialmenu: Release v0.1.0 ist von 2023 (ohne Trunk-Sicherheitsfixes) -> Commit

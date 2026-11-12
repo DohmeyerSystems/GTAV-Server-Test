@@ -112,11 +112,14 @@ return {
         lockState = 'lock', -- 'lock' : vehicle will be locked when spawned, 'unlock' : vehicle will be unlocked when spawned
     },
 
+    -- OVERRIDE: qbx_vehiclekeys ist nicht installiert -> nur aufrufen, wenn es laeuft
     giveVehicleKeys = function(src, plate, vehicle)
+        if GetResourceState('qbx_vehiclekeys') ~= 'started' then return end
         return exports.qbx_vehiclekeys:GiveKeys(src, vehicle)
     end,
 
     setVehicleLock = function(vehicle, state)
+        if GetResourceState('qbx_vehiclekeys') ~= 'started' then return end
         exports.qbx_vehiclekeys:SetLockState(vehicle, state)
     end,
 

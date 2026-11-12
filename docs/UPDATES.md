@@ -32,3 +32,27 @@ Lädt den aktuell als „recommended“ markierten Build. Mindestens Build **129
 ## Game Build
 
 `sv_enforceGameBuild 3258` in `server.cfg`. Höherer Build = neuere DLC-Inhalte, aber alle Spieler müssen ihn laden. Nur ändern, wenn eine Resource es verlangt.
+
+## Overrides von Code-Dateien (bei Updates prüfen!)
+
+Die meisten Overrides betreffen Config-Dateien. Folgender Override ersetzt eine **Code-Datei** und muss nach einem Update der Resource mit dem neuen Original abgeglichen werden (sonst gehen Fixes aus dem Update verloren):
+
+| Override | Grund |
+|---|---|
+| `overrides/qbx_adminmenu/server/main.lua` | `GiveKeys`-Aufruf nur, wenn qbx_vehiclekeys läuft (Resource entfernt) |
+
+Abgleich nach Änderung der Version in `resources.lock`:
+
+```bash
+SKIP_OVERRIDES=1 ./scripts/vendor-resources.sh qbx_adminmenu
+```
+
+```bash
+diff "server-data/resources/[qbx]/qbx_adminmenu/server/main.lua" server-data/overrides/qbx_adminmenu/server/main.lua
+```
+
+Ist der Unterschied mehr als die markierte `OVERRIDE`-Stelle, die neue Originaldatei nach `overrides/` kopieren und die `OVERRIDE`-Stelle dort erneut einbauen. Danach:
+
+```bash
+./scripts/apply-overrides.sh
+```

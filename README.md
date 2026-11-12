@@ -3,7 +3,7 @@
 Kompletter, versionierter FiveM-Server auf Basis von **[Qbox](https://docs.qbox.re/)** (moderner QBCore-Fork, ox-basiert).
 Alle Resources liegen **fest gepinnt im Repo** – ein `git clone` + 4 Befehle ergeben einen lauffähigen Server.
 
-> Status: **Basis-Framework** (Charaktererstellung, Spawn, Inventar, Target, Fahrzeuge/Schlüssel, Adminmenü, Radialmenü, Gurt).
+> Status: **Basis-Framework** (Charaktererstellung, Spawn, Inventar, Target, Fahrzeuge, Adminmenü, Radialmenü, Gurt).
 > Keine Jobs, kein Voice, kein Handy – das wird schrittweise ergänzt.
 
 ---
@@ -16,7 +16,7 @@ Alle Resources liegen **fest gepinnt im Repo** – ein `git clone` + 4 Befehle e
 | `server-data/` | FXServer-Datenordner (`server.cfg`, Configs, `resources/`) |
 | `server-data/resources/[cfx-default]` | CFX-Basis (mapmanager, spawnmanager, …) |
 | `server-data/resources/[ox]` | oxmysql, ox_lib, ox_target, ox_inventory |
-| `server-data/resources/[qbx]` | qbx_core, qbx_spawn, qbx_vehicles, qbx_vehiclekeys, qbx_idcard, qbx_adminmenu, qbx_radialmenu, qbx_seatbelt |
+| `server-data/resources/[qbx]` | qbx_core, qbx_spawn, qbx_vehicles, qbx_idcard, qbx_adminmenu, qbx_radialmenu, qbx_seatbelt |
 | `server-data/resources/[standalone]` | illenium-appearance, bob74_ipl, MugShotBase64 |
 | `server-data/resources/[local]` | **eigene Scripts** (wird nie überschrieben) |
 | `server-data/overrides/` | eigene Anpassungen an Fremd-Resources (überleben Updates) |
@@ -35,7 +35,6 @@ Alle Resources liegen **fest gepinnt im Repo** – ein `git clone` + 4 Befehle e
 | qbx_core | v1.24.1 | Framework-Kern inkl. Multicharacter & qb-core-Bridge |
 | qbx_spawn | v0.1.1 | Spawn-Auswahl |
 | qbx_vehicles | v1.4.2 | Fahrzeug-Datenhaltung |
-| qbx_vehiclekeys | v1.0.2 | Schlüssel – von qbx_core-Config aufgerufen |
 | qbx_idcard | Commit `6462f33` | **Pflicht**: qbx_core gibt neuen Charakteren Ausweis/Führerschein |
 | qbx_adminmenu | v0.1.0 | Adminmenü (`/admin`) |
 | qbx_radialmenu | Commit `f7ef3aa` | Radialmenü (Taste **Z**). Release v0.1.0 ist von 2023 und ohne Sicherheitsfixes |

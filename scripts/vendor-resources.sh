@@ -121,6 +121,11 @@ copy_sql "$RES/[qbx]/qbx_core/qbx_core.sql"       02_qbx_core.sql
 copy_sql "$RES/[qbx]/qbx_vehicles/vehicles.sql"   03_qbx_vehicles.sql
 
 # Overrides (items.lua, Bilder, ...) über die frisch geladenen Resources legen
-"$ROOT/scripts/apply-overrides.sh"
+# SKIP_OVERRIDES=1 -> Originale ansehen/abgleichen (danach apply-overrides.sh ausführen!)
+if [[ "${SKIP_OVERRIDES:-0}" == "1" ]]; then
+  echo "WARN: Overrides NICHT angewendet (SKIP_OVERRIDES=1). Danach: ./scripts/apply-overrides.sh" >&2
+else
+  "$ROOT/scripts/apply-overrides.sh"
+fi
 
 echo "Fertig. Prüfen mit: git status"
