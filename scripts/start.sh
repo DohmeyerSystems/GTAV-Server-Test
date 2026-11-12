@@ -19,7 +19,7 @@ DATA="$ROOT/server-data"
 
 cd "$DATA"
 if [[ "${1:-}" == "--direct" ]]; then
-  exec "$FX" +exec server.cfg   # mit +exec startet FXServer ohne txAdmin
+  exec "$FX" +set onesync on +exec server.cfg   # mit +exec startet FXServer ohne txAdmin
 else
   # txData außerhalb von server-data halten (Laufzeitdaten, nicht im Git)
   exec "$FX" +set txDataPath "$ROOT/txData"
